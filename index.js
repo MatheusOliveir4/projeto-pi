@@ -1,86 +1,77 @@
+document.getElementById('csvFile').addEventListener('change', readFile)
+
 const bar = document.getElementById('barChart');
 const pie = document.getElementById('pieChart');
 const line = document.getElementById('lineChart');
 
-let coisas = ["Segurança", "Luz", "Internet", "Água Publica", "Esgoto"]
-let valoresCoisas = [10, 20, 15, 30, 50]
-new Chart(bar, {
-    type: 'bar',
-    data: {
-        labels: coisas,
-        datasets: [{
-        label: 'Quantidade de escolas que possuem:',
-        data: valoresCoisas,
-        borderWidth: 5
-        }]
+function readFile(e) {
+  const file = e.target.files[0]
+
+  if (!file) {
+    return;
+  }
+
+  parseCSV(file)
+}
+
+async function parseCSV(file) {
+  await Papa.parse(file, {
+    header: true,
+    dynamicTyping: true,
+    complete: function (results) {
+
+      showGraphs(results.data) 
     },
-    options: {
-        options: {
-            responsive: true
-        },
-        layout: {
-          padding: {
-            left: 20,
-            right: 20,
-            top: 20,
-            bottom: 20,
-          },
-        },
-        maintainAspectRatio: false, 
+  });
+}
+
+
+function showGraphs(data) {
+  const neighborhoods = data.map(el => {
+    for (const key in el) {
+      if (key === 'NO_BAIRRO') {
+        return el[key]
+      }
     }
-});
+  })
 
-let profissionalismo = ['Norte', 'Nordeste', 'Centro-Oeste', 'Sul', 'Suldeste'] 
-let valoresProf = [12, 19, 3, 5, 2]
-new Chart(pie, {
-    type: 'doughnut',
-    data: {
-        labels: profissionalismo,
-        datasets: [{
-        label: 'Quantidade de escolas por região:',
-        data: valoresProf,
-        borderWidth: 5
-        }]
-    },
-    options: {
-        options: {
-            responsive: true
-        },
-        layout: {
-          padding: {
-            left: 20,
-            right: 20,
-            top: 20,
-            bottom: 20,
-          },
-        },
-        maintainAspectRatio: false, 
+  const numSchoolsInNeighboorhood = data.map(el => {
+    for (const key in el) {
+      if (key === 'QTD_ESCOLAS') {
+        return el[key]
+      }
     }
-});
+  }) 
 
-let mes = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"]
-let valoresMes = [10, 20, 15, 30, 50, 98, 30, 25, 32, 57, 22, 10]
+  createGraph('bar', 'Quantidade de escolas que possuem:', neighborhoods, numSchoolsInNeighboorhood, barChart)
+  createGraph('pie', 'Quantidade de escolas que possuem:', neighborhoods, numSchoolsInNeighboorhood, pieChart)
+  createGraph('line', 'Quantidade de escolas que possuem:', neighborhoods, numSchoolsInNeighboorhood, lineChart)
+}
 
-new Chart(line, {
-    type: 'line',
+function createGraph(type, lableTitle, labels, data, element) {
+  new Chart(element, {
+    type,
     data: {
-        labels: mes,
-        datasets: [{
-        label: 'Variação de escolas com entrega regular de alimentos:',
-        data: valoresMes,
+      labels,
+      datasets: [{
+        label: lableTitle,
+        data,
         borderWidth: 5
-        }]
+      }]
     },
     options: {
-        layout: {
-          padding: {
-            left: 20,
-            right: 20,
-            top: 20,
-            bottom: 20,
-          },
-        },
-        maintainAspectRatio: false, 
+      options: {
         responsive: true
+      },
+      layout: {
+        padding: {
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom: 20,
+        },
+      },
+      maintainAspectRatio: false, 
     }
-});
+  })
+}
