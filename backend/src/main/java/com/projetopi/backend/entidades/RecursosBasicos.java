@@ -17,4 +17,13 @@ public class RecursosBasicos {
   @EqualsAndHashCode.Include
   @Column(name = "co_entidade")
   private Integer id;
+
+  @Column(name = "in_agua_potavel")
+  private Integer temAguaPotavel;
+
+  @Column(name = "in_agua_inexistente")
+  private Integer temAguaInexistente;
+
+  @Column(name = "in_energia_rede_publica")
+  private Integer temEnergiaRedePublica;
 }

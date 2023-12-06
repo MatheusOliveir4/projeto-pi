@@ -17,4 +17,7 @@ public class LixoEsgoto {
   @EqualsAndHashCode.Include
   @Column(name = "co_entidade")
   private Integer id;
+
+  @Column(name = "in_tratamento_lixo_separacao")
+  private Integer temTratamentoLixoSeparacao;
 }
