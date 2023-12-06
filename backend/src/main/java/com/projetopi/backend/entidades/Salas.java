@@ -17,4 +17,34 @@ public class Salas {
   @EqualsAndHashCode.Include
   @Column(name = "co_entidade")
   private Integer id;
+
+  @Column(name = "in_auditorio")
+  private Integer temAuditorio;
+
+  @Column(name = "in_banheiro")
+  private Integer temBanheiro;
+
+  @Column(name = "in_biblioteca")
+  private Integer temBiblioteca;
+
+  @Column(name = "in_cozinha")
+  private Integer temCozinha;
+
+  @Column(name = "in_laboratio_ciencias")
+  private Integer temLaboratorioCiencias;
+
+  @Column(name = "in_informatica")
+  private Integer temInformatica;
+
+  @Column(name = "in_refeitorio")
+  private Integer temRefeitorio;
+
+  @Column(name = "in_sala_diretoria")
+  private Integer temSalaDiretoria;
+
+  @Column(name = "in_sala_professor")
+  private Integer temSalaProfessor;
+
+  @Column(name = "in_secretaria")
+  private Integer temSecretaria;
 }
