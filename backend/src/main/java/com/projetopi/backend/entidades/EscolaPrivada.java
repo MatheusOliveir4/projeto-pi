@@ -12,9 +12,12 @@ public class EscolaPrivada {
 
   @Id
   @EqualsAndHashCode.Include
-//  @OneToOne
-//  @JoinColumn(name = "co_entidade")
   private Integer id;
+
+  @OneToOne
+  @MapsId
+  @JoinColumn(name = "co_entidade")
+  private Escola escola;
 
   @Embedded
   private Endereco endereco;
