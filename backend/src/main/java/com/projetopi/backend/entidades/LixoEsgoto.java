@@ -3,6 +3,7 @@ package com.projetopi.backend.entidades;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.Fetch;
 
 @Entity
 @Data
@@ -14,7 +15,7 @@ public class LixoEsgoto {
   @EqualsAndHashCode.Include
   private Integer id;
 
-  @OneToOne
+  @OneToOne(fetch = FetchType.LAZY)
   @MapsId
   @JoinColumn(name = "co_entidade")
   private Escola escola;
