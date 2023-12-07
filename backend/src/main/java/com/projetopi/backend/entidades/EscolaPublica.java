@@ -19,6 +19,9 @@ public class EscolaPublica {
   @JoinColumn(name = "co_entidade")
   private Escola escola;
 
+  @Column(name = "no_entidade")
+  private String nomeEscola;
+
   @Embedded
   private Endereco endereco;
 }

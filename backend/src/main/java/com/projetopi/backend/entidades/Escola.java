@@ -18,4 +18,10 @@ public class Escola {
   @ManyToOne
   @JoinColumn(name = "tp_dependencia")
   private Dependencia dependencia;
+
+  @OneToOne(mappedBy = "escola")
+  private EscolaPublica escolaPublica;
+
+  @OneToOne(mappedBy = "escola")
+  private EscolaPrivada escolaPrivada;
 }

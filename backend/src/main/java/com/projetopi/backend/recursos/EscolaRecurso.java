@@ -1,5 +1,6 @@
 package com.projetopi.backend.recursos;
 
+import com.projetopi.backend.dtos.EscolaDTO;
 import com.projetopi.backend.entidades.Escola;
 import com.projetopi.backend.repositorios.EscolaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class EscolaRecurso {
   private EscolaRepositorio repositorio;
 
   @GetMapping
-  public ResponseEntity<List<Escola>> listar() {
-    List<Escola> escolas = repositorio.findAll();
+  public ResponseEntity<List<EscolaDTO>> listar() {
+    List<EscolaDTO> escolas = repositorio.listarEscolasComIdENome();
     return ResponseEntity.ok(escolas);
   }
 }

@@ -18,6 +18,7 @@ public class RecursosBasicosDTO {
   private Integer temAguaPotavel;
   private Integer temAguaInexistente;
   private Integer temEnergiaRedePublica;
+
   public RecursosBasicosDTO(RecursosBasicos entity) {
     this.idEscola = entity.getId();
     this.temAguaPotavel = entity.getTemAguaPotavel();

@@ -17,9 +17,6 @@ public class Endereco {
   @Column(name = "co_cep")
   private Integer cep;
 
-  @Column(name = "no_entidade")
-  private String nomeEscola;
-
   @Column(name = "nu_endereco")
   private Integer numeroEndereco;
 
