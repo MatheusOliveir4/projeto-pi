@@ -27,11 +27,10 @@ public class LixoEsgotoRecurso {
   }
 
   @GetMapping("{id}")
-  public ResponseEntity<List<LixoEsgotoDTO>> encontrarUmRegistro(@PathVariable int id) {
+  public ResponseEntity<LixoEsgotoDTO> encontrarUmRegistro(@PathVariable int id) {
     Optional<LixoEsgoto> resultado = repositorio.findById(id);
+    LixoEsgoto entity =  resultado.orElseThrow(() -> new RuntimeException("Não foi encontrado o recurso"));
 
-    LixoEsgoto e = resultado.orElseThrow(() -> new RuntimeException("Não foi encontrado o recurso"));
-
-    return ResponseEntity.ok(resultado.stream().map(entity -> new LixoEsgotoDTO(entity)).toList());
+    return ResponseEntity.ok(new LixoEsgotoDTO(entity));
   }
 }
