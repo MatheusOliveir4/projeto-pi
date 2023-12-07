@@ -31,10 +31,10 @@ public class Salas {
   @Column(name = "in_cozinha")
   private Integer temCozinha;
 
-  @Column(name = "in_laboratio_ciencias")
+  @Column(name = "in_laboratorio_ciencias")
   private Integer temLaboratorioCiencias;
 
-  @Column(name = "in_informatica")
+  @Column(name = "in_laboratorio_informatica")
   private Integer temInformatica;
 
   @Column(name = "in_refeitorio")

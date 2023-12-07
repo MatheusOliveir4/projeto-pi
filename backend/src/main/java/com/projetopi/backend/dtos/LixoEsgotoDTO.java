@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LixoEsgotoDTO {
 
-  private Integer id;
+  private Integer idEscola;
   private Integer temTratamentoLixoSeparacao;
 
   public LixoEsgotoDTO(LixoEsgoto entity) {
-    this.id = entity.getId();
+    this.idEscola = entity.getId();
     this.temTratamentoLixoSeparacao = entity.getTemTratamentoLixoSeparacao();
   }
 }

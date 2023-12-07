@@ -1,10 +1,7 @@
 package com.projetopi.backend.recursos;
 
-import com.projetopi.backend.dtos.SalasDTO;
 import com.projetopi.backend.dtos.TIDTO;
-import com.projetopi.backend.entidades.Salas;
 import com.projetopi.backend.entidades.TI;
-import com.projetopi.backend.repositorios.SalasRepositorio;
 import com.projetopi.backend.repositorios.TIRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +15,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/ti")
-public class TIRecurso {
+public class RecursosBasicosRecurso {
 
   @Autowired
-  private TIRepositorio repositorio;
+  private Recursos repositorio;
 
   @GetMapping
   public ResponseEntity<List<TIDTO>> listar() {

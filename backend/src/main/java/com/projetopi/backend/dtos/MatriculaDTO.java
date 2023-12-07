@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MatriculaDTO {
 
-  private Integer id;
+  private Integer idEscola;
   private Integer qtMatriculaBasica;
   private Integer qtMatriculaInfantil;
   private Integer qtMatriculaInfantilCreche;
@@ -24,7 +24,7 @@ public class MatriculaDTO {
   private Integer qtMatriculaFundamental;
 
   public MatriculaDTO(Matricula entity) {
-    this.id = entity.getId();
+    this.idEscola = entity.getId();
     this.qtMatriculaBasica = entity.getQtMatriculaBasica();
     this.qtMatriculaInfantil = entity.getQtMatriculaInfantil();
     this.qtMatriculaInfantilCreche = entity.getQtMatriculaInfantilCreche();
