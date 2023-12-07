@@ -27,7 +27,7 @@ public class LixoEsgotoRecurso {
   }
 
   @GetMapping("{id}")
-  public ResponseEntity<LixoEsgotoDTO> encontrarUmRegistro(@PathVariable int id) {
+  public ResponseEntity<LixoEsgotoDTO> encontrarRegistro(@PathVariable int id) {
     Optional<LixoEsgoto> resultado = repositorio.findById(id);
     LixoEsgoto entity =  resultado.orElseThrow(() -> new RuntimeException("Não foi encontrado o recurso"));
 
