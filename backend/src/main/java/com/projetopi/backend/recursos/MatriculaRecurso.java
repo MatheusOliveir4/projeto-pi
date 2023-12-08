@@ -38,4 +38,16 @@ public class MatriculaRecurso {
 
     return ResponseEntity.ok(new MatriculaDTO(entity));
   }
+
+  @GetMapping("/escolas_publicas")
+  public ResponseEntity<List<MatriculaDTO>> encontrarLixoEsgotoEscolaPublica() {
+    List<MatriculaDTO> resultado = repositorio.listarMatriculaEscolaPublica();
+    return ResponseEntity.ok(resultado);
+  }
+
+  @GetMapping("/escolas_privadas")
+  public ResponseEntity<List<MatriculaDTO>> encontrarLixoEsgotoEscolaPrivada() {
+    List<MatriculaDTO> resultado = repositorio.listarMatriculaEscolaPrivada();
+    return ResponseEntity.ok(resultado);
+  }
 }

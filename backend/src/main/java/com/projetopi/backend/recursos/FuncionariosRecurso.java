@@ -3,6 +3,7 @@ package com.projetopi.backend.recursos;
 import com.projetopi.backend.dtos.FuncionariosDTO;
 import com.projetopi.backend.dtos.TIDTO;
 import com.projetopi.backend.entidades.Funcionarios;
+import com.projetopi.backend.entidades.Salas;
 import com.projetopi.backend.entidades.TI;
 import com.projetopi.backend.repositorios.FuncionariosRepositorio;
 import com.projetopi.backend.repositorios.TIRepositorio;
@@ -35,5 +36,17 @@ public class FuncionariosRecurso {
     Funcionarios entity =  resultado.orElseThrow(() -> new RuntimeException("Não foi encontrado o recurso"));
 
     return ResponseEntity.ok(new FuncionariosDTO(entity));
+  }
+
+  @GetMapping("/escolas_publicas")
+  public ResponseEntity<List<FuncionariosDTO>> encontrarFuncionariosEscolaPublica() {
+    List<FuncionariosDTO> resultado = repositorio.listarFuncionariosEscolaPublica();
+    return ResponseEntity.ok(resultado);
+  }
+
+  @GetMapping("/escolas_privadas")
+  public ResponseEntity<List<FuncionariosDTO>> encontrarFuncionariosEscolaPrivada() {
+    List<FuncionariosDTO> resultado = repositorio.listarFuncionariosEscolaPrivada();
+    return ResponseEntity.ok(resultado);
   }
 }
