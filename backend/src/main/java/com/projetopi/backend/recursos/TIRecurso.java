@@ -36,4 +36,17 @@ public class TIRecurso {
 
     return ResponseEntity.ok(new TIDTO(entity));
   }
+
+  @GetMapping("/escolas_publicas")
+  public ResponseEntity<List<TIDTO>> encontrarLixoEsgotoEscolaPublica() {
+    List<TIDTO> resultado = repositorio.listarTIEscolaPublica();
+    return ResponseEntity.ok(resultado);
+  }
+
+  @GetMapping("/escolas_privadas")
+  public ResponseEntity<List<TIDTO>> encontrarLixoEsgotoEscolaPrivada() {
+    List<TIDTO> resultado = repositorio.listarTIEscolaPrivada();
+    return ResponseEntity.ok(resultado);
+  }
+
 }
