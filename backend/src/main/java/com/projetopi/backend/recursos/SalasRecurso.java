@@ -1,6 +1,7 @@
 package com.projetopi.backend.recursos;
 
 import com.projetopi.backend.dtos.MatriculaDTO;
+import com.projetopi.backend.dtos.RecursosBasicosDTO;
 import com.projetopi.backend.dtos.SalasDTO;
 import com.projetopi.backend.entidades.Matricula;
 import com.projetopi.backend.entidades.Salas;
@@ -35,5 +36,17 @@ public class SalasRecurso {
     Salas entity =  resultado.orElseThrow(() -> new RuntimeException("Não foi encontrado o recurso"));
 
     return ResponseEntity.ok(new SalasDTO(entity));
+  }
+
+  @GetMapping("/escolas_publicas")
+  public ResponseEntity<List<SalasDTO>> encontrarLixoEsgotoEscolaPublica() {
+    List<SalasDTO> resultado = repositorio.listarSalasEscolaPublica();
+    return ResponseEntity.ok(resultado);
+  }
+
+  @GetMapping("/escolas_privadas")
+  public ResponseEntity<List<SalasDTO>> encontrarLixoEsgotoEscolaPrivada() {
+    List<SalasDTO> resultado = repositorio.listarSalasEscolaPrivada();
+    return ResponseEntity.ok(resultado);
   }
 }
